@@ -1,71 +1,76 @@
-import { Pressable, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { Pressable, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Parser } from 'expr-eval';
 
 const Calculator = () => {
 
     const [val,setVal] = useState('');
-    const [history,setHistory] = useState([]);
+    const [history,setHistory] = useState<String[]>([]);
+    const parser = new Parser();
 
-    const result = () => {
+    const handlePress = (input:String) => setVal(val + input);
+
+    const calculateResult = () => {
         try{
-            var res = eval(val); setVal(res);
-
-            setHistory((history) => {
-                const updatedHistory = [val,...history];
-                if(history.length > 5){
-                    updatedHistory.pop();
-                }
-                return updatedHistory;
-            });
+            const result = parser.evaluate(val);
+            setVal(result.toString());
+            updateHistory(result + ' ');
         }
         catch(error){
-            setVal('Error');
-            setInterval(()=>{
-                setVal('');
-            },10000);
+            if (error instanceof Error) {
+                displayError(error);
+            } else {
+                // Handle unexpected types if needed
+                displayError(new Error('Unknown error occurred'));
+            }
         }
+    };
+
+    const updateHistory = (entry:String ) =>{
+        const newHistory = [entry,...history].slice(0,5);
+        setHistory(newHistory);
+    };
+
+    const displayError = (error: Error) =>{
+        setVal('Error ' + error);
+        setTimeout(() => setVal(' '),10000);
     };
 
     return (
         <View>
             <View>
+                <View>
+                    <Text>{history}</Text>
+                </View>
                 <Text>{val}</Text>
             </View>
             <View>
                 <View>
-                    <Pressable onPress={()=>setVal(val + '1')}><Text>1</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '2')}><Text>2</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '3')}><Text>3</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '+')}><Text>+</Text></Pressable>
+                    {['1','2','3','+'].map((char) => (
+                        <Pressable key={char} onPress={() => handlePress(char)}><Text>{char}</Text></Pressable>
+                    ))}
                 </View>
 
                 <View>
-                    <Pressable onPress={()=>setVal(val + '4')}><Text>4</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '5')}><Text>5</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '6')}><Text>6</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '-')}><Text>-</Text></Pressable>
+                    {['4','5','6','-'].map((char) => (
+                        <Pressable key={char} onPress={() => handlePress(char)}><Text>{char}</Text></Pressable>
+                    ))}
                 </View>
 
                 <View>
-                    <Pressable onPress={()=>setVal(val + '7')}><Text>7</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '8')}><Text>8</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '9')}><Text>9</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '*')}><Text>*</Text></Pressable>
+                    {['7','8','9','*'].map((char) => (
+                        <Pressable key={char} onPress={() => handlePress(char)}><Text>{char}</Text></Pressable>
+                    ))}
                 </View>
 
                 <View>
                     <Pressable onPress={()=>setVal('')}><Text>Reset</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '0')}><Text>0</Text></Pressable>
-                    <Pressable onPress={()=>result()}><Text>=</Text></Pressable>
-                    <Pressable onPress={()=>setVal(val + '/')}><Text>/</Text></Pressable>
+                    <Pressable onPress={()=>handlePress('0')}><Text>0</Text></Pressable>
+                    <Pressable onPress={()=>calculateResult()}><Text>=</Text></Pressable>
+                    <Pressable onPress={()=>handlePress('/')}><Text>/</Text></Pressable>
                 </View>
             </View>
-            <View>
-                <Text>{history}</Text>
-            </View>
         </View>
-    )
-  
-}
-
+    );
+};
 export default Calculator;

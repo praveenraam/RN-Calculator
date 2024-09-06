@@ -7,8 +7,18 @@ const Calculator = () => {
     const [val,setVal] = useState('');
     const [history,setHistory] = useState<String[]>([]);
     const parser = new Parser();
+    const [fontSize, setFontSize] = useState(30); // Initial font size
 
-    const handlePress = (input:String) => setVal(val + input);
+    const handlePress = (input:String) => {
+        setVal(val + input);
+        if (val.length >= 17) {
+            setFontSize(30); // Reduce font size further
+        } else if (val.length >= 10) {
+            setFontSize(35); // Intermediate size
+        } else {
+            setFontSize(40); // Reset to default size
+        }
+    }
 
     const calculateResult = () => {
         try{
@@ -44,13 +54,16 @@ const Calculator = () => {
     };
 
     return (
-        <View className="grid grid-rows-4 grid-flow-row gap-10">
-            <View>
-                <View>
-                    <Text>{history}</Text>
-                </View>
-                <Text>{val}</Text>
+        <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen">
+            <View className="h-1/4 ">
+                {/* <View>
+                    <Text className="text-white	">{history}</Text>
+                </View> */}
+                {/* <View className="bg-gray-500"> */}
+                    <Text className="absolute bottom-0 right-0 mr-10 ml-10 text-white" style={{ fontSize: fontSize }} numberOfLines={1} ellipsizeMode="tail">{val}</Text>
+                {/* </View> */}
             </View>
+
             <View className="grid grid-rows-4 grid-flow-row gap-4 ">
 
 

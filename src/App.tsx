@@ -4,7 +4,7 @@ import Calculator from './Calculator';
 
 const App = () => {
   return (
-    <View>
+    <View className="bg-black h-screen">
       <Calculator />
     </View>
   );

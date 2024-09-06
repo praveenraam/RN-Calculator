@@ -1,4 +1,7 @@
+
 # Calculator App
+
+[![wakatime](https://wakatime.com/badge/user/19d677e9-0da9-4aa1-9d77-1b27177e095d/project/9b35fa10-674d-4a2e-bdb3-642cdb4bcfd1.svg)](https://wakatime.com/badge/user/19d677e9-0da9-4aa1-9d77-1b27177e095d/project/9b35fa10-674d-4a2e-bdb3-642cdb4bcfd1)
 
 A simple calculator app built using **React Native** and styled with **NativeWind** (Tailwind CSS for React Native). The app allows users to perform basic arithmetic operations with a history of recent calculations.
 
@@ -15,8 +18,9 @@ A simple calculator app built using **React Native** and styled with **NativeWin
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/calculator-app.git
+   git clone https://github.com/praveenraam/RN-Calculator.git
    cd calculator-app
+   ```
 
 2. Intall dependencies
    ```bash

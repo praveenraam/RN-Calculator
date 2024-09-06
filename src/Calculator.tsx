@@ -1,6 +1,7 @@
 import { Pressable, Text, View, Image } from 'react-native';
 import React, { useState } from 'react';
 import { Parser } from 'expr-eval';
+import History from './History';
 
 const Calculator = () => {
 
@@ -8,6 +9,7 @@ const Calculator = () => {
     const [history,setHistory] = useState<String[]>([]);
     const parser = new Parser();
     const [fontSize, setFontSize] = useState(30); // Initial font size
+    const [showHistory,setShowHistory] = useState(false);
 
     const handlePress = (input:String) => {
         setVal(val + input);
@@ -45,23 +47,49 @@ const Calculator = () => {
     };
 
     const displayError = (error: Error) =>{
-        setVal('Error ' + error);
-        setTimeout(() => setVal(' '),3000);
+        setVal('Error : Enter Number and Operations in correct format   ');
+        setFontSize(20);
+        setTimeout(() => {
+            setVal(' ');
+            setFontSize(40);
+        }
+            ,3000);
     };
 
     const resetVal = () => {
         setVal('');
+        setFontSize(40);
+    };
+
+    const toggleHistory = () => {
+        setShowHistory(!showHistory);
+    };
+
+    const selectHistory = (entry:string) => {
+        setVal(entry);
+        toggleHistory;
     };
 
     return (
-        <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen">
-            <View className="h-1/4 ">
-                {/* <View>
-                    <Text className="text-white	">{history}</Text>
-                </View> */}
-                {/* <View className="bg-gray-500"> */}
-                    <Text className="absolute bottom-0 right-0 mr-10 ml-10 text-white" style={{ fontSize: fontSize }} numberOfLines={1} ellipsizeMode="tail">{val}</Text>
-                {/* </View> */}
+        <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen" style={{backgroundColor:'rgb(21, 21, 21)'}}>
+            <View className="h-1/4">
+
+                <Pressable className="p-3" onPress={toggleHistory}>
+                    <Image source={require('./img/history.png')} className="w-10 h-10"  />
+                </Pressable>
+                {showHistory ? (
+                    <History history={history} onSelectHistory={selectHistory} />
+                ) : (
+                    <Text
+                        className="text-white text-right absolute bottom-0 right-0 mr-10 ml-10 text-white"
+                        style={{ fontSize: fontSize }}
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
+                    >
+                        {val}
+                    </Text>
+                )}
+
             </View>
 
             <View className="grid grid-rows-4 grid-flow-row gap-4 ">

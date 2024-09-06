@@ -8,24 +8,43 @@ const Calculator = () => {
     const [val,setVal] = useState('');
     const [history,setHistory] = useState<String[]>([]);
     const parser = new Parser();
-    const [fontSize, setFontSize] = useState(30); // Initial font size
+    const [fontSize, setFontSize] = useState(40);
     const [showHistory,setShowHistory] = useState(false);
 
     const handlePress = (input:String) => {
-        setVal(val + input);
-        if (val.length >= 17) {
-            setFontSize(30); // Reduce font size further
-        } else if (val.length >= 10) {
-            setFontSize(35); // Intermediate size
-        } else {
-            setFontSize(40); // Reset to default size
+        const operators = ['+', '-', '*', '/'];
+        let lastChar = val.slice(-1);
+
+        // Handling multiply Operators
+        if (operators.includes(input) && operators.includes(lastChar)) {
+            setVal(val.slice(0, -1) + input);
         }
-    }
+        else {
+            setVal(val + input);
+        }
+
+        // Handling Font Size
+        if (val.length >= 17) {
+            setFontSize(30);
+        } else if (val.length >= 10) {
+            setFontSize(35);
+        } else {
+            setFontSize(40);
+        }
+    };
 
     const calculateResult = () => {
         try{
-            const result = parser.evaluate(val);
-            updateHistory('(' + val + ') = ' + result + '   ');
+            let sanitizedVal = val;
+
+            // Handling the Ops at the end and the beginning of the val
+            sanitizedVal = sanitizedVal.replace(/^(?!-)[+*/-]+/, '');
+            sanitizedVal = sanitizedVal.replace(/[+*/-]+$/, '');
+
+            sanitizedVal = sanitizedVal.replace(/([+\-*/])\1+/g, '$1');
+
+            const result = parser.evaluate(sanitizedVal);
+            updateHistory('(' + sanitizedVal + ') = ' + result + '   ');
             setVal(result.toString());
         }
         catch(error){

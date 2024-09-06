@@ -9,13 +9,16 @@ const History: React.FC<HistoryProps>  = ({history}) => {
 
   return (
     <View className="w-full p-4">
-      {history.length === 0 ?
-        (<Text className="text-white text-lg">No History</Text>
-        ) :
-        history.map((entry) => (
-            <Text className="text-white text-lg">{entry}</Text>
-        )
-      )}
+        {
+            history.length === 0 ?
+        (
+            <Text>No History</Text>
+        ) : (
+            history.map((entry, index) => (
+            <Text key={index} className="text-white text-lg" >
+                {entry}
+            </Text>
+        )))}
     </View>
   )
 }

@@ -12,7 +12,7 @@ const History: React.FC<HistoryProps>  = ({history}) => {
         {
             history.length === 0 ?
         (
-            <Text>No History</Text>
+            <Text className="text-white text-xl">No History</Text>
         ) : (
             history.map((entry, index) => (
             <Text key={index} className="text-white text-lg" >

@@ -72,7 +72,7 @@ const Calculator = () => {
             setVal(' ');
             setFontSize(40);
         }
-            ,3000);
+        ,3000);
     };
 
     const resetVal = () => {

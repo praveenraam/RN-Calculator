@@ -1,7 +1,8 @@
 import { Pressable, Text, View, Image } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Parser } from 'expr-eval';
 import History from './History';
+import { getFromAsyncStorage, removeFromAsyncStorage, saveToAsyncStorage } from './asyncStorageHelper';
 
 const Calculator = () => {
 
@@ -10,6 +11,16 @@ const Calculator = () => {
     const parser = new Parser();
     const [fontSize, setFontSize] = useState(40);
     const [showHistory,setShowHistory] = useState(false);
+
+    useEffect(() => {
+        const loadHistory = async (): Promise<void> => {
+            const storedHistory = await getFromAsyncStorage('CalculatorHistory');
+            setHistory(storedHistory);
+            console.log(storedHistory);
+        };
+
+        loadHistory();
+    }, []);
 
     const handlePress = (input:String) => {
         const operators = ['+', '-', '*', '/'];
@@ -56,9 +67,10 @@ const Calculator = () => {
         }
     };
 
-    const updateHistory = (entry:String ) =>{
+    const updateHistory = async (entry:String ) =>{
         const newHistory = [entry,...history].slice(0,5);
         setHistory(newHistory);
+        await saveToAsyncStorage('CalculatorHistory',newHistory);
     };
 
     const deleteLastChar = () => {

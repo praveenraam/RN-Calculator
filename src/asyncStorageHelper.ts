@@ -14,6 +14,7 @@ export const getFromAsyncStorage = async (key:string): Promise<any | null> => {
     try{
         const jsonValue = await AsyncStorage.getItem(key);
         const parsedValue = jsonValue != null ? JSON.parse(jsonValue) : [];
+        console.log(jsonValue);
         return Array.isArray(parsedValue) ? parsedValue : [];
     }
     catch(error){

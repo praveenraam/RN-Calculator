@@ -16,7 +16,6 @@ const Calculator = () => {
         const loadHistory = async (): Promise<void> => {
             const storedHistory = await getFromAsyncStorage('CalculatorHistory');
             setHistory(storedHistory);
-            console.log(storedHistory);
         };
 
         loadHistory();
@@ -101,15 +100,26 @@ const Calculator = () => {
         toggleHistory;
     };
 
+    const clearHistory = async () => {
+        await removeFromAsyncStorage('CalculatorHistory');
+        setHistory([]);
+    };
+
     return (
         <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen" style={{backgroundColor:'rgb(21, 21, 21)'}}>
             <View className="h-1/4">
 
                 <Pressable className="p-3" onPress={toggleHistory}>
-                    <Image source={require('./img/history.png')} className="w-10 h-10"  />
+                    {showHistory ? (
+                        <Image source={require('./img/cross.png')} className="w-10 h-10" />
+                    ) : (
+                        <Image source={require('./img/history.png')} className="w-10 h-10"  />
+                    )}
                 </Pressable>
+
+
                 {showHistory ? (
-                    <History history={history} onSelectHistory={selectHistory} />
+                    <History history={history} onSelectHistory={selectHistory} onClearHistory={clearHistory} />
                 ) : (
                     <Text
                         className="text-white text-right absolute bottom-0 right-0 mr-10 ml-10 text-white"

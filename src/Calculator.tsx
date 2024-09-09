@@ -1,7 +1,7 @@
 import { Pressable, Text, View, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Parser } from 'expr-eval';
-import History from './History';
+import History from './components/History';
 import { getFromAsyncStorage, removeFromAsyncStorage, saveToAsyncStorage } from './asyncStorageHelper';
 
 const Calculator = () => {
@@ -108,6 +108,12 @@ const Calculator = () => {
     return (
         <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen" style={{backgroundColor:'rgb(21, 21, 21)'}}>
             <View className="h-1/4">
+
+                <View className="absolute top-1 right-0 p-3"> 
+                    <Pressable>
+                        <Image source={require('./img/more.png')} className="w-7 h-7" />
+                    </Pressable>
+                </View>
 
                 <Pressable className="p-3" onPress={toggleHistory}>
                     {showHistory ? (

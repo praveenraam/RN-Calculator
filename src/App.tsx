@@ -1,11 +1,11 @@
 import { View } from 'react-native';
 import React from 'react';
-import Calculator from './Calculator';
+import AppNavigator from './navigation/AppNavigator';
 
 const App = () => {
   return (
-    <View className="bg-black h-screen">
-      <Calculator />
+    <View className="h-screen">
+      <AppNavigator />
     </View>
   );
 };

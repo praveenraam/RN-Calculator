@@ -5,6 +5,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Calculator from '../Calculator';
 import About from '../About';
 
+export type RootStackParamList = {
+  Calculator: undefined;
+  About: undefined;  // Add other screens here if necessary
+};
 
 const Stack = createNativeStackNavigator();
 

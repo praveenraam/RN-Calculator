@@ -21,7 +21,7 @@ const OptionsComponent: React.FC<OptionMenuProps> = ({onClose}) => {
 
   return (
     <View className="absolute top-3 right-10 bg-white p-4 border bg-black rounded shadow-lg">
-     <Pressable onPress={() => handleNavigation('About')} className="mb-2">
+     <Pressable onPress={() => handleNavigation('ConversionsList')} className="mb-2">
        <Text className="text-white">Conversion</Text>
      </Pressable>
      <Pressable onPress={() => handleNavigation('About')} className="mb-2">

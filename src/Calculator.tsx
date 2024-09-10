@@ -115,19 +115,22 @@ const Calculator = () => {
         <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen" style={{backgroundColor:'rgb(21, 21, 21)'}}>
             <View className="h-1/4">
 
+                <Pressable onPress={toggleOptions} className="absolute top-1 right-0 p-3 z-10">
+                <Image source={require('./img/more.png')} className="w-7 h-7" />
+                </Pressable>
 
-                    <Pressable onPress={toggleOptions} className="absolute top-1 right-0 p-3 z-10">
-                        <Image source={require('./img/more.png')} className="w-7 h-7" />
-                    </Pressable>
-
-                    <View className="bg-gray-500">{showOptions && <OptionsComponent onClose={toggleOptions}/>}</View>
+                {showOptions && (
+                <View className="absolute top-0 right-0 bg-gray-500 z-20">
+                    <OptionsComponent onClose={toggleOptions} />
+                </View>
+                )}
 
                 <View className="p-3 h-full">
                     <Pressable onPress={toggleHistory}>
                         {showHistory ? (
-                            <Image source={require('./img/cross.png')} className="w-10 h-10" />
+                        <Image source={require('./img/cross.png')} className="w-10 h-10" />
                         ) : (
-                            <Image source={require('./img/history.png')} className="w-10 h-10" />
+                        <Image source={require('./img/history.png')} className="w-10 h-10" />
                         )}
                     </Pressable>
 
@@ -135,12 +138,12 @@ const Calculator = () => {
                         <History history={history} onSelectHistory={selectHistory} onClearHistory={clearHistory} />
                     ) : (
                         <Text
-                            className="text-white text-right absolute bottom-0 right-0 mr-10 ml-10"
-                            style={{ fontSize: fontSize }}
-                            numberOfLines={1}
-                            ellipsizeMode="tail"
+                        className="text-white text-right absolute bottom-0 right-0 mr-10 ml-10"
+                        style={{ fontSize: 32 }}
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
                         >
-                            {val}
+                        {val}
                         </Text>
                     )}
                 </View>

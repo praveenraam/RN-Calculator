@@ -156,10 +156,10 @@ const Calculator = () => {
                     <Pressable className="py-5 mx-3.5 w-44 h-16 bg-red-400 rounded-full" onPress={() => resetVal()}>
                         <Text className="text-center text-white">Reset</Text>
                     </Pressable>
-                    <Pressable className="m-3 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center" onPress={() => handlePress('(')}>
+                    <Pressable className="m-3 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center" onPress={() => handlePress('(')}>
                         <Text className="text-white text-lg">(</Text>
                     </Pressable>
-                    <Pressable className="m-3 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center" onPress={() => handlePress(')')}>
+                    <Pressable className="m-3 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center" onPress={() => handlePress(')')}>
                         <Text className="text-white text-lg">)</Text>
                     </Pressable>
                 </View>
@@ -168,7 +168,7 @@ const Calculator = () => {
                     {['1','2','3','+'].map((char) => (
                         <Pressable
                             key={char}
-                            className="m-4 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center"
+                            className="m-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center"
                             onPress={() => handlePress(char)}
                         >
                             <Text className="text-white text-lg">{char}</Text>
@@ -179,7 +179,7 @@ const Calculator = () => {
                     {['4','5','6','-'].map((char) => (
                         <Pressable
                             key={char}
-                            className="m-4 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center"
+                            className="m-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center"
                             onPress={() => handlePress(char)}
                         >
                             <Text className="text-white text-lg">{char}</Text>
@@ -191,7 +191,7 @@ const Calculator = () => {
                     {['7','8','9','*'].map((char) => (
                         <Pressable
                             key={char}
-                            className="m-4 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center"
+                            className="m-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center"
                             onPress={() => handlePress(char)}
                         >
                             <Text className="text-white text-lg">{char}</Text>
@@ -199,12 +199,12 @@ const Calculator = () => {
                 </View>
 
                 <View className="flex flex-row justify-center items-center mx-auto ">
-                    <Pressable onPress={deleteLastChar} className="m-4 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center">
+                    <Pressable onPress={deleteLastChar} className="m-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
                         <Image source={require('../assets/img/backspace.png')} className="w-5 h-5"  />
                     </Pressable>
-                    <Pressable className="m-4 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center"onPress={()=>handlePress('0')}><Text className="text-white text-lg" >0</Text></Pressable>
-                    <Pressable className="m-4 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center" onPress={()=>calculateResult()}><Text className="text-white text-lg" >=</Text></Pressable>
-                    <Pressable className="m-4 w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center" onPress={()=>handlePress('/')}><Text className="text-white text-lg">/</Text></Pressable>
+                    <Pressable className="m-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center"onPress={()=>handlePress('0')}><Text className="text-white text-lg" >0</Text></Pressable>
+                    <Pressable className="m-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center" onPress={()=>calculateResult()}><Text className="text-white text-lg" >=</Text></Pressable>
+                    <Pressable className="m-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center" onPress={()=>handlePress('/')}><Text className="text-white text-lg">/</Text></Pressable>
                 </View>
             </View>
         </View>

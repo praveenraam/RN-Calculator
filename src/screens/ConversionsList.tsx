@@ -7,17 +7,32 @@ type ConversionType = {
 };
 
 const conversions: ConversionType[] = [
-  { id: '1', name: 'Temperature' }, // Fixed spelling
+  { id: '1', name: 'Temperature', }, // Fixed spelling
   { id: '2', name: 'Weight' },
   { id: '3', name: 'Length' },
   { id: '4', name: 'Area' },
 ];
 
+const getImage = (itemName:String) => {
+
+  switch (itemName){
+
+    case 'Temperature' : return require('../../assets/img/conversions/Temperature.png');
+    case 'Area' : return require('../../assets/img/conversions/Area.png');
+    case 'Length' : return require('../../assets/img/conversions/Length.png');
+    case 'Weight' : return require('../../assets/img/conversions/Weight.png');
+  }
+
+};
+
 const ConversionsList = () => {
   const renderItem = ({ item }: { item: ConversionType }) => (
     <Pressable className="p-4 bg-gray-700 rounded-md my-2 flex-row item-center">
-      <Text className="text-white text-lg flex-1">{item.name}</Text>
-      <Image source={require('../../assets/img/right.png')} className="w-5 h-5" />
+      <View className="flex-1 flex-row item-center">
+        <Text className="text-white text-lg mr-2">{item.name}</Text>
+        <Image source={getImage(item.name)} className="w-5 h-5 mt-1"/>
+      </View>
+      <Image source={require('../../assets/img/right.png')} className="w-5 h-5 mt-1" />
     </Pressable>
   );
 

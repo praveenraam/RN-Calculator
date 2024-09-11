@@ -17,7 +17,7 @@ const ConversionsList = () => {
   const renderItem = ({ item }: { item: ConversionType }) => (
     <Pressable className="p-4 bg-gray-700 rounded-md my-2 flex-row item-center">
       <Text className="text-white text-lg flex-1">{item.name}</Text>
-      <Image source={require('../img/right.png')} className="w-5 h-5" />
+      <Image source={require('../../assets/img/right.png')} className="w-5 h-5" />
     </Pressable>
   );
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { View,Text } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 
@@ -18,8 +18,25 @@ type ParamList = {
 
 const Conversion = () => {
   const route = useRoute<RouteProp<ParamList,'Conversion'>>();
-
   const {conversionType} = route.params;
+
+  const [inputValue,setInputValue] = useState('');
+
+  const handlePress = (key:string) => {
+    if(key === 'Reset'){
+      setInputValue('');
+    }
+    else if(key === 'backSpace'){
+      setInputValue(inputValue.slice(0,-1));
+    }
+    else if(key === '+/-'){
+      setInputValue(inputValue.startsWith('-') ? inputValue.slice(1) : '-' + inputValue);
+    }
+    else{
+      setInputValue(inputValue + key);
+    }
+    console.log(inputValue);
+  };
 
   const conversionComponent = (type: string) => {
     if(type === 'Temperature'){
@@ -38,14 +55,14 @@ const Conversion = () => {
 
 
   return (
-    <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen" style={{backgroundColor:'rgb(21, 21, 21)'}}>
+    <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen" style={{ backgroundColor: 'rgb(21, 21, 21)' }}>
       <View>
-       {conversionComponent(conversionType)}
-      </View>
-      <View>
-        <ConversionNumPad />
+        {conversionComponent(conversionType)}
       </View>
 
+      <View>
+        <ConversionNumPad onPressKey={handlePress} />
+      </View>
     </View>
   );
 

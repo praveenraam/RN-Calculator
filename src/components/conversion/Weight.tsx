@@ -1,12 +1,12 @@
 import { Text, View } from 'react-native';
 import React from 'react';
 
-const Conversion = () => {
+const Weight = () => {
   return (
     <View>
-      <Text>Conversion</Text>
+      <Text>Weight</Text>
     </View>
   );
 };
 
-export default Conversion;
+export default Weight;

@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Calculator from '../Calculator';
 import About from '../screens/About';
 import ConversionsList from '../screens/ConversionsList';
+import Conversion from '../screens/Conversion';
 
 export type RootStackParamList = {
   Calculator: undefined;
@@ -19,6 +20,7 @@ const AppNavigator = () => {
             <Stack.Screen name="Calculator" component={Calculator} />
             <Stack.Screen name="About" component={About} />
             <Stack.Screen name="ConversionsList" component={ConversionsList} />
+            <Stack.Screen name="Conversion" component={Conversion} />
         </Stack.Navigator>
       </NavigationContainer>
   );

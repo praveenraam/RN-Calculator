@@ -21,7 +21,7 @@ const History: React.FC<HistoryProps> = ({ history = [], onClearHistory }) => {
                         </Text>
                     ))}
                     <Pressable onPress={onClearHistory} className="mt-4">
-                        <Image source={require('../img/delete.png')} className="w-10 h-10" />
+                        <Image source={require('../../assets/img/delete.png')} className="w-10 h-10" />
                     </Pressable>
                 </>
             )}

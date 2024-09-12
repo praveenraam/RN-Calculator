@@ -8,6 +8,7 @@ import Temperature from '../components/conversion/Temperature';
 import Area from '../components/conversion/Area';
 import Weight from '../components/conversion/Weight';
 import Length from '../components/conversion/Length';
+import ConversionNumPad from '../components/ConversionNumPad';
 
 type ParamList = {
   Conversion:{
@@ -37,8 +38,14 @@ const Conversion = () => {
 
 
   return (
-    <View>
-      {conversionComponent(conversionType)}
+    <View className="grid grid-rows-4 grid-flow-row gap-10 bg-black h-screen" style={{backgroundColor:'rgb(21, 21, 21)'}}>
+      <View>
+       {conversionComponent(conversionType)}
+      </View>
+      <View>
+        <ConversionNumPad />
+      </View>
+
     </View>
   );
 

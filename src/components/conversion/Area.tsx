@@ -3,8 +3,8 @@ import React from 'react';
 
 const Area = () => {
   return (
-    <View>
-      <Text>Area</Text>
+    <View className="h-1/4">
+      <Text className="text-white">Area</Text>
     </View>
   );
 };

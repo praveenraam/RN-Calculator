@@ -3,8 +3,8 @@ import React from 'react';
 
 const Temperature = () => {
   return (
-    <View>
-      <Text>Temperature</Text>
+    <View className="h-1/4">
+      <Text className="text-white">Temperature</Text>
     </View>
   );
 };

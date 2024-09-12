@@ -3,9 +3,9 @@ import React from 'react';
 
 const Weight = () => {
   return (
-    <View>
-      <Text>Weight</Text>
-    </View>
+    <View className="h-1/4">
+      <Text className="text-white">Weight</Text>
+      </View>
   );
 };
 

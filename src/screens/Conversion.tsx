@@ -40,16 +40,16 @@ const Conversion = () => {
 
   const conversionComponent = (type: string) => {
     if(type === 'Temperature'){
-      return <Temperature />;
+      return <Temperature inputValue={inputValue} />;
     }
     else if(type === 'Area'){
-      return <Area />;
+      return <Area inputValue={inputValue} />;
     }
     else if(type === 'Weight'){
-      return <Weight />;
+      return <Weight inputValue={inputValue} />;
     }
     else if(type === 'Length'){
-      return <Length />;
+      return <Length inputValue={inputValue} />;
     }
   };
 

@@ -32,7 +32,7 @@ const ConversionsList = () => {
 
   const handlePress = (item:ConversionType) => {
     navigation.navigate('Conversion',{conversionType: item.name});
-  }
+  };
 
   const renderItem = ({ item }: { item: ConversionType }) => (
     <Pressable onPress={() => handlePress(item)} className="p-4 bg-gray-700 rounded-md my-2 flex-row item-center">

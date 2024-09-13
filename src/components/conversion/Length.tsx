@@ -3,8 +3,8 @@ import React from 'react';
 
 const Length = () => {
   return (
-    <View>
-      <Text>Length</Text>
+    <View className="h-1/4">
+      <Text className="text-white">Length</Text>
     </View>
   );
 };

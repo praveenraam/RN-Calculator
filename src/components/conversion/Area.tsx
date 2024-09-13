@@ -42,24 +42,28 @@ const Area = ({inputValue}: AreaProps) => {
   },[inputValue,conversionType]);
 
   return (
-    <View>
+    <View className="flex flex-col justify-center items-center">
+
+    <View className="h-12 bg-gray-800 rounded-lg justify-center items-center mb-3 ">
       <Picker
+        dropdownIconColor={'#fff'}
         selectedValue={conversionType}
+        style={{ height: 50, width: 250, color: 'white' }}
         onValueChange={(itemValue) => setConversionType(itemValue)}
-        className="text-white"
       >
         <Picker.Item label="Meters to Feet" value="Square Meters to Square Feet" />
         <Picker.Item label="Feet to Yards" value="Square Feet to Square Yards" />
         <Picker.Item label="Yards to Acres" value="Square Yards to Acres" />
         <Picker.Item label="Acres to Hectares" value="Acres to Hectares" />
       </Picker>
+    </View>
 
-      <View >
-        <Text className="text-white">{inputValue}</Text>
+      <View  className="bg-gray-800 w-4/5 p-4 my-3 rounded-lg">
+        <Text className="text-white text-2xl text-center">{inputValue}</Text>
       </View>
 
-      <View>
-        <Text className="text-white">{resultValue}</Text>
+      <View className="bg-gray-800 w-4/5 p-4 my-3 rounded-lg">
+        <Text className="text-white text-2xl text-center">{resultValue}</Text>
       </View>
     </View>
   );

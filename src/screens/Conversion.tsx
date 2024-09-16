@@ -54,7 +54,7 @@ const Conversion = () => {
       return <Length inputValue={inputValue} />;
     }
     else if(type === 'Power'){
-      return <Power />;
+      return <Power inputValue={inputValue} />;
     }
   };
 

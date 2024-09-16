@@ -14,19 +14,16 @@ const Temperature = ({ inputValue }: TemperatureProps) => {
     switch (type) {
       case 'Celsius to Fahrenheit':
         return ((value * 9/5) + 32).toFixed(2);  // °C to °F: (°C × 9/5) + 32 = °F
-
       case 'Fahrenheit to Celsius':
         return ((value - 32) * 5/9).toFixed(2);  // °F to °C: (°F − 32) × 5/9 = °C
 
       case 'Celsius to Kelvin':
         return (value + 273.15).toFixed(2);  // °C to K: °C + 273.15 = K
-
       case 'Kelvin to Celsius':
         return (value - 273.15).toFixed(2);  // K to °C: K − 273.15 = °C
 
       case 'Fahrenheit to Kelvin':
         return (((value - 32) * 5/9) + 273.15).toFixed(2);  // °F to K: (°F − 32) × 5/9 + 273.15 = K
-
       case 'Kelvin to Fahrenheit':
         return (((value - 273.15) * 9/5) + 32).toFixed(2);  // K to °F: (K − 273.15) × 9/5 + 32 = °F
 

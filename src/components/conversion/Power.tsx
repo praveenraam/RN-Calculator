@@ -17,6 +17,25 @@ const Power = ({ inputValue }: PowerProps) => {
       case 'Kilowatts to Watts':
         return (value * 1000).toFixed(2);  // kW to W
 
+      case 'Watts to Horsepower (metric)':
+        return (value / 735.5).toFixed(2);  // W to HP (metric)
+      case 'Horsepower (metric) to Watts':
+        return (value * 735.5).toFixed(2);  // HP (metric) to W
+
+      case 'Watts to Horsepower (US)':
+        return (value / 745.7).toFixed(2);  // W to HP (US)
+      case 'Horsepower (US) to Watts':
+        return (value * 745.7).toFixed(2);  // HP (US) to W
+
+      case 'Kilowatts to Horsepower (metric)':
+        return (value * 1.35962).toFixed(2);  // kW to HP (metric)
+      case 'Horsepower (metric) to Kilowatts':
+        return (value / 1.35962).toFixed(2);  // HP (metric) to kW
+
+      case 'Kilowatts to Horsepower (US)':
+        return (value * 1.34102).toFixed(2);  // kW to HP (US)
+      case 'Horsepower (US) to Kilowatts':
+        return (value / 1.34102).toFixed(2);  // HP (US) to kW
 
       default:
         return '0';
@@ -48,6 +67,14 @@ const Power = ({ inputValue }: PowerProps) => {
         >
           <Picker.Item label="Watts to Kilowatts" value="Watts to Kilowatts" />
           <Picker.Item label="Kilowatts to Watts" value="Kilowatts to Watts" />
+          <Picker.Item label="Watts to Horsepower (metric)" value="Watts to Horsepower (metric)" />
+          <Picker.Item label="Horsepower (metric) to Watts" value="Horsepower (metric) to Watts" />
+          <Picker.Item label="Watts to Horsepower (US)" value="Watts to Horsepower (US)" />
+          <Picker.Item label="Horsepower (US) to Watts" value="Horsepower (US) to Watts" />
+          <Picker.Item label="Kilowatts to Horsepower (metric)" value="Kilowatts to Horsepower (metric)" />
+          <Picker.Item label="Horsepower (metric) to Kilowatts" value="Horsepower (metric) to Kilowatts" />
+          <Picker.Item label="Kilowatts to Horsepower (US)" value="Kilowatts to Horsepower (US)" />
+          <Picker.Item label="Horsepower (US) to Kilowatts" value="Horsepower (US) to Kilowatts" />
         </Picker>
       </View>
 

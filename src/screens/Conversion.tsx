@@ -4,12 +4,13 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 
 
 // Components
+import ConversionNumPad from '../components/ConversionNumPad';
 import Temperature from '../components/conversion/Temperature';
 import Area from '../components/conversion/Area';
 import Weight from '../components/conversion/Weight';
 import Length from '../components/conversion/Length';
 import Power from '../components/conversion/Power';
-import ConversionNumPad from '../components/ConversionNumPad';
+import Speed from '../components/conversion/Speed';
 
 type ParamList = {
   Conversion:{
@@ -55,6 +56,9 @@ const Conversion = () => {
     }
     else if(type === 'Power'){
       return <Power inputValue={inputValue} />;
+    }
+    else if(type === 'Speed'){
+      return <Speed />
     }
   };
 

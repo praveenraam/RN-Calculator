@@ -58,7 +58,7 @@ const Conversion = () => {
       return <Power inputValue={inputValue} />;
     }
     else if(type === 'Speed'){
-      return <Speed inputValue={inputValue} />
+      return <Speed inputValue={inputValue} />;
     }
   };
 

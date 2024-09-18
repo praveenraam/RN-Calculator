@@ -17,6 +17,21 @@ const Speed = ({ inputValue }: SpeedProps) => {
       case 'Kilometers per Hour to Meters per Second':
         return (value / 3.6).toFixed(2);  // km/h to m/s
 
+      case 'Miles per Hour to Kilometers per Hour':
+        return (value * 1.60934).toFixed(2);  // mph to km/h
+      case 'Kilometers per Hour to Miles per Hour':
+        return (value / 1.60934).toFixed(2);  // km/h to mph
+
+      case 'Feet per Second to Meters per Second':
+        return (value * 0.3048).toFixed(2);  // ft/s to m/s
+      case 'Meters per Second to Feet per Second':
+        return (value / 0.3048).toFixed(2);  // m/s to ft/s
+
+      case 'Knots to Kilometers per Hour':
+        return (value * 1.852).toFixed(2);  // knots to km/h
+      case 'Kilometers per Hour to Knots':
+        return (value / 1.852).toFixed(2);  // km/h to knots
+
       default:
         return '0';
     }
@@ -47,6 +62,12 @@ const Speed = ({ inputValue }: SpeedProps) => {
         >
           <Picker.Item label="Meters per Second to Kilometers per Hour" value="Meters per Second to Kilometers per Hour" />
           <Picker.Item label="Kilometers per Hour to Meters per Second" value="Kilometers per Hour to Meters per Second" />
+          <Picker.Item label="Miles per Hour to Kilometers per Hour" value="Miles per Hour to Kilometers per Hour" />
+          <Picker.Item label="Kilometers per Hour to Miles per Hour" value="Kilometers per Hour to Miles per Hour" />
+          <Picker.Item label="Feet per Second to Meters per Second" value="Feet per Second to Meters per Second" />
+          <Picker.Item label="Meters per Second to Feet per Second" value="Meters per Second to Feet per Second" />
+          <Picker.Item label="Knots to Kilometers per Hour" value="Knots to Kilometers per Hour" />
+          <Picker.Item label="Kilometers per Hour to Knots" value="Kilometers per Hour to Knots" />
         </Picker>
       </View>
 

@@ -62,7 +62,7 @@ const Conversion = () => {
       return <Speed inputValue={inputValue} />;
     }
     else if(type === 'Currency'){
-      return <Currency />;
+      return <Currency inputValue={inputValue} />;
     }
   };
 

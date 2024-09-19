@@ -14,6 +14,7 @@ const conversions: ConversionType[] = [
   { id: '4', name: 'Area' },
   { id:' 5', name: 'Power'},
   { id: '6', name: 'Speed'},
+  { id: '7', name: 'Currency'},
 ];
 
 const getImage = (itemName:String) => {
@@ -25,6 +26,7 @@ const getImage = (itemName:String) => {
     case 'Length' : return require('../../assets/img/conversions/Length.png');
     case 'Weight' : return require('../../assets/img/conversions/Weight.png');
     case 'Power' : return require('../../assets/img/conversions/Power.png');
+    case 'Currency' : return require('../../assets/img/conversions/Currency.png');
     case 'Speed' : return require('../../assets/img/conversions/Speed.png');
   }
 

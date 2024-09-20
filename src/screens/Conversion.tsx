@@ -11,6 +11,7 @@ import Weight from '../components/conversion/Weight';
 import Length from '../components/conversion/Length';
 import Power from '../components/conversion/Power';
 import Speed from '../components/conversion/Speed';
+import Currency from '../components/conversion/Currency';
 
 type ParamList = {
   Conversion:{
@@ -37,11 +38,9 @@ const Conversion = () => {
     else{
       setInputValue(inputValue + key);
     }
-    console.log(inputValue);
   };
 
   const conversionComponent = (type: string) => {
-    console.log(type);
     if(type === 'Temperature'){
       return <Temperature inputValue={inputValue} />;
     }
@@ -59,6 +58,9 @@ const Conversion = () => {
     }
     else if(type === 'Speed'){
       return <Speed inputValue={inputValue} />;
+    }
+    else if(type === 'Currency'){
+      return <Currency inputValue={inputValue} />;
     }
   };
 

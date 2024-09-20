@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ActivityIndicator } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-// import axios from 'axios';
+import axios from 'axios';
 
 type CurrencyConverterProps = {
   inputValue: string;
@@ -12,25 +12,30 @@ const CurrencyConverter = ({ inputValue }: CurrencyConverterProps) => {
   const [toCurrency, setToCurrency] = useState<string>('INR');
   const [conversionRate, setConversionRate] = useState<number>(1);
   const [resultValue, setResultValue] = useState<string>('0');
+  const [currencies, setCurrencies] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const fetchConversionRate = useCallback(async () => {
+  const fetchCurrencyData = useCallback(async () => {
     try {
       const apiKey = 'YOUR_API_KEY';
       const response = await axios.get(
         `https://api.exchangerate-api.com/v4/latest/${fromCurrency}?access_key=${apiKey}`
       );
-      const rates = response.data.rates;
-      setConversionRate(rates[toCurrency]);
+      const data = response.data;
+      setCurrencies(Object.keys(data.rates));
+      setConversionRate(data.rates[toCurrency]);
+      setLoading(false);
     } catch (error) {
-      console.error('Error fetching conversion rates:', error);
+      console.error('Error fetching currency data:', error);
+      setLoading(false);
     }
   }, [fromCurrency, toCurrency]);
 
   useEffect(() => {
     if (fromCurrency && toCurrency) {
-      fetchConversionRate();
+      fetchCurrencyData();
     }
-  }, [fromCurrency, toCurrency, fetchConversionRate]);
+  }, [fromCurrency, toCurrency, fetchCurrencyData]);
 
   useEffect(() => {
     if (inputValue) {
@@ -46,6 +51,10 @@ const CurrencyConverter = ({ inputValue }: CurrencyConverterProps) => {
     }
   }, [inputValue, conversionRate]);
 
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
   return (
     <View className="flex flex-col justify-center items-center">
       <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', marginBottom: 20 }}>
@@ -57,10 +66,9 @@ const CurrencyConverter = ({ inputValue }: CurrencyConverterProps) => {
             style={{ height: 50, width: 150, color: 'white' }}
             onValueChange={(itemValue) => setFromCurrency(itemValue)}
           >
-            <Picker.Item label="USD" value="USD" />
-            <Picker.Item label="INR" value="INR" />
-            <Picker.Item label="EUR" value="EUR" />
-            <Picker.Item label="GBP" value="GBP" />
+            {currencies.map((currency) => (
+              <Picker.Item key={currency} label={currency} value={currency} />
+            ))}
           </Picker>
         </View>
 
@@ -71,10 +79,9 @@ const CurrencyConverter = ({ inputValue }: CurrencyConverterProps) => {
             style={{ height: 50, width: 150, color: 'white' }}
             onValueChange={(itemValue) => setToCurrency(itemValue)}
           >
-            <Picker.Item label="USD" value="USD" />
-            <Picker.Item label="INR" value="INR" />
-            <Picker.Item label="EUR" value="EUR" />
-            <Picker.Item label="GBP" value="GBP" />
+            {currencies.map((currency) => (
+              <Picker.Item key={currency} label={currency} value={currency} />
+            ))}
           </Picker>
         </View>
       </View>

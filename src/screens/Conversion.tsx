@@ -38,11 +38,9 @@ const Conversion = () => {
     else{
       setInputValue(inputValue + key);
     }
-    console.log(inputValue);
   };
 
   const conversionComponent = (type: string) => {
-    console.log(type);
     if(type === 'Temperature'){
       return <Temperature inputValue={inputValue} />;
     }

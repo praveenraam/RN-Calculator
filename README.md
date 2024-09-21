@@ -52,9 +52,9 @@ The calculator is simple to use. It features a standard set of numeric buttons a
 ## Contact
 If you have any queries or want to connect, feel free to reach out through the following platforms:
 
-- [Email](ckpraveeraam@gmail.com)
-- [GitHub](github.com/praveenraam)
-- [LinkedIn](linkedin.com/praveenraam)
+- [Email](mailto:ckpraveeraam@gmail.com)
+- [GitHub](https://github.com/praveenraam)
+- [LinkedIn](https://linkedin.com/in/praveenraam)
 
 ## License
 
